@@ -70,7 +70,10 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
     private int subscriptionConnectionPoolSize = 50;
 
     private long dnsMonitoringInterval = 5000;
-    
+
+    private int infoReadTimeout = 1000;
+    private int infoConnectTimeout = 10000;
+
     public BaseMasterSlaveServersConfig() {
     }
 
@@ -88,6 +91,7 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
         setDnsMonitoringInterval(config.getDnsMonitoringInterval());
         setFailedSlaveCheckInterval(config.getFailedSlaveCheckInterval());
         setFailedSlaveReconnectionInterval(config.getFailedSlaveReconnectionInterval());
+        setInfoReadTimeout(config.getInfoReadTimeout());
     }
 
     /**
@@ -344,5 +348,34 @@ public class BaseMasterSlaveServersConfig<T extends BaseMasterSlaveServersConfig
     public long getDnsMonitoringInterval() {
         return dnsMonitoringInterval;
     }
-    
+
+    public int getInfoReadTimeout() {
+        return infoReadTimeout;
+    }
+
+    /**
+     * Timeout specifically to workaround the current implementation which allows for monitoring calls to be slower than actual cache requests<p>
+     * Default is <code>1000</code> to align with the polling interval.
+     * @param infoReadTimeout
+     * @return config
+     */
+    public T setInfoReadTimeout(int infoReadTimeout) {
+        this.infoReadTimeout = infoReadTimeout;
+        return (T) this;
+    }
+
+    public int getInfoConnectTimeout() {
+        return infoConnectTimeout;
+    }
+
+    /**
+     * Timeout specifically to workaround the current implementation which allows for monitoring calls to be slower than actual cache requests
+     *  Default is <code>1000</code> to align with the polling interval.
+     * @param infoConnectTimeout
+     * @return config
+     */
+    public T setInfoConnectTimeout(int infoConnectTimeout) {
+        this.infoConnectTimeout = infoConnectTimeout;
+        return (T) this;
+    }
 }

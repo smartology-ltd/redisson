@@ -3,7 +3,7 @@
 
     <groupId>org.redisson</groupId>
     <artifactId>redisson-parent</artifactId>
-    <version>3.10.8-SNAPSHOT</version>
+    <version>3.10.8-SNAPSHOT-smartology</version>
     <packaging>pom</packaging>
 
     <name>Redisson</name>
@@ -25,9 +25,9 @@
     </properties>
 
     <scm>
-        <url>scm:git:git@github.com:redisson/redisson.git</url>
-        <connection>scm:git:git@github.com:redisson/redisson.git</connection>
-        <developerConnection>scm:git:git@github.com:redisson/redisson.git</developerConnection>
+        <url>scm:git:git@github.com:smartology-ltd/redisson.git</url>
+        <connection>scm:git:git@github.com:smartology-ltd/redisson.git</connection>
+        <developerConnection>scm:git:git@github.com:smartology-ltd/redisson.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -64,6 +64,19 @@
         <module>redisson-spring-boot-starter</module>
         <module>redisson-hibernate</module>
     </modules>
+
+    <repositories>
+        <repository>
+            <id>spring-plugins</id>
+            <name>Spring Plugins Repo</name>
+            <url>http://repo.spring.io/plugins-release/</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
 
     <profiles>
         <profile>
